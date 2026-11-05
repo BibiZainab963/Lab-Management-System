@@ -1,0 +1,16 @@
+{
+  "name": "zainab-college-lab-equipment-management",
+  "version": "1.0.0",
+  "description": "Zainab College Lab Equipment Management System",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.3"
+  }
+}

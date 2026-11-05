@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zainab College | Lab Equipment Management</title>
+  <meta name="description" content="Zainab College Lab Equipment Management System">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ZC</div>
+      <div>
+        <div class="brand-name">ZAINAB</div>
+        <div class="brand-sub">COLLEGE LABS</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-item active" data-page="home"><span>⌂</span> Overview</button>
+      <button class="nav-item" data-page="equipment"><span>▣</span> Equipment</button>
+      <button class="nav-item" data-page="issues"><span>⇄</span> Issue Records</button>
+      <button class="nav-item" data-page="users"><span>♙</span> Users</button>
+    </nav>
+
+    <div class="sidebar-card">
+      <div class="pulse-dot"></div>
+      <div>
+        <strong>System Online</strong>
+        <small>MySQL database ready</small>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="mini-logo">Z</div>
+      <div>
+        <strong>Lab Operations</strong>
+        <small>Smart inventory control</small>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="crumb"><span>Laboratory</span><b>/</b><strong id="pageTitle">Overview</strong></div>
+      <div class="top-actions">
+        <div class="status-chip"><i></i> Live system</div>
+        <div class="avatar">Z</div>
+      </div>
+    </header>
+
+    <section class="page" id="homePage">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">ZAINAB COLLEGE • SMART LAB OPERATIONS</div>
+          <h1>Zainab College<br><span>Lab Equipment</span> Management System</h1>
+          <p>Track laboratory equipment, issue records and users from one elegant command center.</p>
+          <div class="hero-buttons">
+            <button class="primary-btn" data-page-jump="equipment">Explore Equipment <span>→</span></button>
+            <button class="ghost-btn" data-page-jump="issues">Manage Issue Records</button>
+          </div>
+        </div>
+        <div class="hero-orbit">
+          <div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div>
+          <div class="core"><span>LAB</span><strong>01</strong></div>
+          <div class="floating f1">⚡<b>Smart</b></div>
+          <div class="floating f2">◈<b>Secure</b></div>
+          <div class="floating f3">↗<b>Efficient</b></div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-icon teal">▣</div><div><small>Total Equipment</small><strong id="totalEquipment">—</strong><span>Registered items</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon gold">✓</div><div><small>Available Units</small><strong id="availableUnits">—</strong><span>Ready for issue</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue">⇄</div><div><small>Active Issues</small><strong id="activeIssues">—</strong><span>Currently issued</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon rose">♙</div><div><small>Registered Users</small><strong id="totalUsers">—</strong><span>Students & faculty</span></div>
+        </div>
+      </div>
+
+      <div class="section-grid">
+        <div class="panel">
+          <div class="panel-head">
+            <div><div class="section-kicker">INVENTORY PULSE</div><h2>Equipment availability</h2></div>
+            <button class="text-btn" data-page-jump="equipment">View all →</button>
+          </div>
+          <div class="availability">
+            <div class="donut"><div><strong id="availabilityPct">—%</strong><span>available</span></div></div>
+            <div class="legend">
+              <div><span class="legend-dot available"></span><div><b id="availableLegend">—</b><small>Available units</small></div></div>
+              <div><span class="legend-dot issued"></span><div><b id="issuedLegend">—</b><small>Issued units</small></div></div>
+              <div><span class="legend-dot damaged"></span><div><b id="damagedLegend">—</b><small>Damaged items</small></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel quick-panel">
+          <div class="section-kicker">QUICK ACTIONS</div>
+          <h2>Run your lab smoothly</h2>
+          <div class="quick-grid">
+            <button data-page-jump="equipment"><span>＋</span><b>Add equipment</b><small>Register new lab item</small></button>
+            <button data-page-jump="issues"><span>⇄</span><b>Issue equipment</b><small>Create an issue record</small></button>
+            <button data-page-jump="users"><span>♙</span><b>Add user</b><small>Register student/faculty</small></button>
+            <button onclick="refreshAll()"><span>↻</span><b>Refresh data</b><small>Sync dashboard</small></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-grid">
+        <div class="panel">
+          <div class="panel-head"><div><div class="section-kicker">CONTROL CENTER</div><h2>What this system manages</h2></div></div>
+          <div class="feature-row">
+            <div><span>01</span><b>Inventory</b><p>Quantity and availability at a glance.</p></div>
+            <div><span>02</span><b>Issuing</b><p>Record who received each item.</p></div>
+            <div><span>03</span><b>Returns</b><p>Update stock when equipment comes back.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="equipmentPage">
+      <div class="page-heading">
+        <div><div class="eyebrow">INVENTORY MANAGEMENT</div><h1>Equipment</h1><p>Maintain every laboratory asset in one place.</p></div>
+        <button class="primary-btn" onclick="openModal('equipmentModal')">＋ Add Equipment</button>
+      </div>
+      <div class="toolbar"><input id="equipmentSearch" placeholder="Search equipment or category..." oninput="renderEquipment()"><select id="equipmentStatus" onchange="renderEquipment()"><option value="">All statuses</option><option>Available</option><option>Unavailable</option><option>Damaged</option></select></div>
+      <div class="table-card"><table><thead><tr><th>ID</th><th>Equipment</th><th>Category</th><th>Total</th><th>Available</th><th>Status</th><th>Action</th></tr></thead><tbody id="equipmentTable"></tbody></table></div>
+    </section>
+
+    <section class="page hidden" id="issuesPage">
+      <div class="page-heading">
+        <div><div class="eyebrow">TRANSACTION CONTROL</div><h1>Issue Records</h1><p>Track issued and returned equipment.</p></div>
+        <button class="primary-btn" onclick="openIssueModal()">＋ Issue Equipment</button>
+      </div>
+      <div class="toolbar"><input id="issueSearch" placeholder="Search equipment, user or status..." oninput="renderIssues()"><select id="issueStatus" onchange="renderIssues()"><option value="">All statuses</option><option>Issued</option><option>Returned</option><option>Overdue</option></select></div>
+      <div class="table-card"><table><thead><tr><th>ID</th><th>Equipment</th><th>User</th><th>Issue Date</th><th>Return Date</th><th>Qty</th><th>Status</th><th>Action</th></tr></thead><tbody id="issuesTable"></tbody></table></div>
+    </section>
+
+    <section class="page hidden" id="usersPage">
+      <div class="page-heading">
+        <div><div class="eyebrow">ACCESS DIRECTORY</div><h1>Users</h1><p>Manage students, faculty and administrators.</p></div>
+        <button class="primary-btn" onclick="openModal('userModal')">＋ Add User</button>
+      </div>
+      <div class="toolbar"><input id="userSearch" placeholder="Search name or email..." oninput="renderUsers()"></div>
+      <div class="user-grid" id="usersGrid"></div>
+    </section>
+
+    <footer class="footer">© 2026 Zainab College Lab Operations <span>•</span> Built for smarter laboratory management</footer>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="modal-backdrop hidden" id="equipmentModal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('equipmentModal')">×</button>
+    <div class="eyebrow">NEW INVENTORY ITEM</div><h2>Add Equipment</h2>
+    <form id="equipmentForm">
+      <label>Equipment Name<input name="name" required placeholder="e.g. Digital Multimeter"></label>
+      <label>Category<input name="category" required placeholder="e.g. Electronics"></label>
+      <div class="form-row"><label>Total Quantity<input name="quantity" type="number" min="1" required></label><label>Available Quantity<input name="available_quantity" type="number" min="0" required></label></div>
+      <label>Status<select name="status"><option>Available</option><option>Unavailable</option><option>Damaged</option></select></label>
+      <button class="primary-btn full" type="submit">Save Equipment</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-backdrop hidden" id="userModal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('userModal')">×</button>
+    <div class="eyebrow">NEW SYSTEM USER</div><h2>Add User</h2>
+    <form id="userForm">
+      <label>Full Name<input name="name" required placeholder="Student or faculty name"></label>
+      <label>Email<input name="email" type="email" required placeholder="name@zainabcollege.edu"></label>
+      <label>Password<input name="password" type="password" minlength="8" required placeholder="Minimum 8 characters"></label>
+      <label>Role<select name="role"><option>Student</option><option>Faculty</option><option>Admin</option></select></label>
+      <button class="primary-btn full" type="submit">Create User</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-backdrop hidden" id="issueModal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('issueModal')">×</button>
+    <div class="eyebrow">ISSUE EQUIPMENT</div><h2>Create Issue Record</h2>
+    <form id="issueForm">
+      <label>Equipment<select name="equipment_id" id="equipmentSelect" required></select></label>
+      <label>User<select name="user_id" id="userSelect" required></select></label>
+      <div class="form-row"><label>Issue Date<input name="issue_date" type="date" required></label><label>Quantity<input name="quantity" type="number" min="1" value="1" required></label></div>
+      <label>Expected Return Date<input name="return_date" type="date"></label>
+      <label>Status<select name="status"><option>Issued</option><option>Overdue</option></select></label>
+      <button class="primary-btn full" type="submit">Create Issue</button>
+    </form>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
